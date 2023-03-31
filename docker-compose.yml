@@ -14,13 +14,11 @@ services:
             - ./.env
         ports:
             - 8020:8080
-    frontend:
-        container_name: baato-website
-        image: "arogyak/gnnie-frontend"
-        restart: always
-        env_file:
-            - ./.env
-        ports:
-            - 8010:3000
-
-    
+    # frontend:
+    #     container_name: baato-website
+    #     image: "arogyak/gnnie-frontend"
+    #     restart: always
+    #     env_file:
+    #         - ./.env
+    #     ports:
+    #         - 8010:3000
