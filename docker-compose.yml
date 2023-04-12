@@ -3,10 +3,8 @@ services:
     nginx:
         build:
             context: ./nginx
-        args:
-            DOMAIN: ${DOMAIN}
-            EMAIL: ${EMAIL}
-            FLASK: application
+        env_file: 
+            - ./.env
         ports:
             - 80:80
             - 443:443
