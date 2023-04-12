@@ -2,7 +2,7 @@ version: "3"
 services:
     nginx:
         build:
-        context: ./nginx
+            context: ./nginx
         args:
             DOMAIN: ${DOMAIN}
             EMAIL: ${EMAIL}
