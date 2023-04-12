@@ -1,5 +1,19 @@
 version: "3"
 services:
+    nginx:
+        build:
+        context: ./nginx
+        args:
+            DOMAIN: ${DOMAIN}
+            EMAIL: ${EMAIL}
+            FLASK: application
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+        # depends_on:
+        #     - application
     db:
         container_name: gnnie-db-postgres
         image: "postgres:latest"
@@ -14,11 +28,18 @@ services:
             - ./.env
         ports:
             - 8020:8080
-    # frontend:
-    #     container_name: baato-website
-    #     image: "arogyak/gnnie-frontend"
-    #     restart: always
-    #     env_file:
-    #         - ./.env
-    #     ports:
-    #         - 8010:3000
+    model-service:
+        container_name: gnnie-model-service
+        image: "arogyak/gnnie-model-service"
+        env_file: 
+            - ./.env
+        ports:
+            - 8030:5000
+    frontend:
+        container_name: gnnie-client
+        image: "arogyak/gnnie-client"
+        restart: always
+        env_file:
+            - ./.env
+        ports:
+            - 8010:3000
