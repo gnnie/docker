@@ -1,17 +1,17 @@
 version: "3"
 services:
-    nginx:
-        build:
-            context: ./nginx
-        env_file: 
-            - ./.env
-        ports:
-            - 80:80
-            - 443:443
-        volumes:
-            - /etc/letsencrypt:/etc/letsencrypt
-        # depends_on:
-        #     - application
+    # nginx:
+    #     build:
+    #         context: ./nginx
+    #     env_file: 
+    #         - ./.env
+    #     ports:
+    #         - 80:80
+    #         - 443:443
+    #     volumes:
+    #         - /etc/letsencrypt:/etc/letsencrypt
+    #     # depends_on:
+    #     #     - application
     db:
         container_name: gnnie-db-postgres
         image: "postgres:latest"
